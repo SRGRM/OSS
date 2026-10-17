@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.eggs/
+
+# data, caches and experiment outputs
+data/
+cache/
+runs/
+container_test/
+*.npy
+*.mp4
+
+# model weights (kept out of git; see weights/README.md)
+weights/*
+!weights/README.md
+*.pt
+*.pth
+
+# editors and OS files
+.idea/
+.vscode/
+.DS_Store

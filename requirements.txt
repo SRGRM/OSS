@@ -1,0 +1,8 @@
+# Packages of the training and inference pipelines except torch / torchvision.
+# Install torch first with requirements-cu118.txt or requirements-cu121.txt (they include this file).
+numpy>=1.21,<2
+pandas>=1.3
+openpyxl>=3.0
+opencv-python>=4.5
+tqdm>=4.60
+scipy>=1.7

@@ -1,0 +1,7 @@
+# CUDA 11.x machines (for example a CUDA 11.4 driver of the R470 series).
+# The cu118 wheels ship their own CUDA runtime and run on any CUDA 11 driver >= 450.80.
+#     pip install -r requirements-cu118.txt
+--extra-index-url https://download.pytorch.org/whl/cu118
+torch==2.1.2+cu118
+torchvision==0.16.2+cu118
+-r requirements.txt

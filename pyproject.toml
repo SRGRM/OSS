@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oss-suturing-skills"
+version = "1.0.0"
+description = "Training and inference pipelines for the Open Suturing Skills (OSS) challenge: GRS classification, OSATS score prediction and keypoint tracking from suturing videos"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{ name = "Saeid Rezaei" }]
+keywords = ["surgical skill assessment", "OSATS", "video classification", "keypoint tracking", "EndoVis", "MICCAI", "generative reward machine"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+# torch / torchvision are installed first from the wheel index that matches the CUDA driver
+# (see requirements-cu118.txt, requirements-cu121.txt and INSTALL.md); the "torch" extra pulls
+# the default PyPI build for machines where that is fine.
+dependencies = [
+    "numpy>=1.21,<2",
+    "pandas>=1.3",
+    "openpyxl>=3.0",
+    "opencv-python>=4.5",
+    "tqdm>=4.60",
+    "scipy>=1.7",
+]
+
+[project.optional-dependencies]
+torch = ["torch>=1.12", "torchvision>=0.13"]
+timm = ["timm>=0.9"]
+dev = ["pyflakes", "pycodestyle", "pylint"]
+
+[project.urls]
+Paper = "https://arxiv.org/abs/2605.22200"
+Challenge = "https://opencas.dkfz.de/endovis/challenges/2025/"
+
+[project.scripts]
+oss-task1 = "oss_suturing.task1_grs_classification:main"
+oss-task2 = "oss_suturing.task2_osats_prediction:main"
+oss-task3 = "oss_suturing.task3_keypoint_tracking:main"
+oss-infer-task1 = "oss_suturing.inference_task1:main"
+oss-infer-task2 = "oss_suturing.inference_task2:main"
+oss-infer-task3 = "oss_suturing.inference_task3:main"
+
+[tool.setuptools]
+packages = ["oss_suturing"]
+
+[tool.pycodestyle]
+max-line-length = 120
+
+[tool.pylint.format]
+max-line-length = 120
